@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Noto Sans Thai', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-gray-900 text-white hover:bg-gray-800 focus:ring-gray-900;
+  }
+  .btn-brand {
+    @apply btn bg-brand-500 text-white hover:bg-brand-600 focus:ring-brand-500;
+  }
+  .btn-accent {
+    @apply btn bg-accent-100 text-accent-800 border border-accent-300 hover:bg-accent-200 focus:ring-accent-500;
+  }
+  .btn-outline {
+    @apply btn border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 focus:ring-gray-300
+           dark:bg-[#2a3245] dark:border-[#3a4560] dark:text-gray-200 dark:hover:bg-[#3a4560];
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-600;
+  }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .btn-lg { @apply px-6 py-3 text-base; }
+
+  .input {
+    @apply w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm placeholder-gray-400
+           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition
+           dark:bg-[#2a3245] dark:border-[#3a4560] dark:text-gray-100 dark:placeholder-gray-500;
+  }
+  .label {
+    @apply block text-xs font-medium text-gray-500 mb-1.5 dark:text-gray-400;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-brand-200 shadow-sm
+           dark:bg-[#242d3f] dark:border-[#3a4560] dark:shadow-none;
+  }
+  .card-cream {
+    @apply bg-cream-100 rounded-xl border border-cream-200 shadow-sm
+           dark:bg-[#242d3f] dark:border-[#3a4560] dark:shadow-none;
+  }
+  .card-header {
+    @apply px-5 py-4 border-b border-gray-100 flex items-center justify-between
+           dark:border-[#3a4560];
+  }
+  .card-body { @apply p-5; }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium;
+  }
+  .badge-green  { @apply bg-brand-50  text-brand-700  dark:bg-brand-900/30  dark:text-brand-300; }
+  .badge-red    { @apply bg-red-50    text-red-700    dark:bg-red-900/30    dark:text-red-300; }
+  .badge-amber  { @apply bg-amber-50  text-amber-700  dark:bg-amber-900/30  dark:text-amber-300; }
+  .badge-blue   { @apply bg-blue-50   text-blue-700   dark:bg-blue-900/30   dark:text-blue-300; }
+  .badge-purple { @apply bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300; }
+  .badge-gray   { @apply bg-gray-100  text-gray-600   dark:bg-[#3a4560]     dark:text-gray-300; }
+
+  .table-row-hover {
+    @apply hover:bg-gray-50 transition-colors dark:hover:bg-[#2a3245]/80;
+  }
+  th {
+    @apply px-4 py-3 text-left text-xs font-medium text-gray-500 bg-gray-50 border-b border-gray-100
+           dark:bg-[#1e2533] dark:text-gray-400 dark:border-[#3a4560];
+  }
+  td {
+    @apply px-4 py-3 text-sm border-b border-gray-50
+           dark:border-[#3a4560]/50 dark:text-gray-200;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: #3a4560; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* ===================================================================
+   Dark Mode — เพิ่มความสว่างให้ตัวหนังสือสีเทาที่อ่านยาก
+   แก้ที่เดียว ครอบคลุมทุกหน้า (override gray-400/500/600 ใน dark)
+   =================================================================== */
+.dark .text-gray-400,
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-slate-400,
+.dark .text-slate-500,
+.dark .text-slate-600,
+.dark .text-zinc-400,
+.dark .text-zinc-500,
+.dark .text-neutral-400,
+.dark .text-neutral-500 {
+  color: #e5e7eb !important;   /* เทาอ่อนมาก เกือบขาว อ่านง่ายบนพื้นมืด */
+}
+
+/* label และ subtitle ที่จางเป็นพิเศษ → ขาวนวล */
+.dark .label,
+.dark th {
+  color: #d1d5db !important;
+}
+
+/* ข้อความรองที่ต้องชัดสุด (ชื่อรายการ, วันที่) */
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: #f3f4f6 !important;
+}
